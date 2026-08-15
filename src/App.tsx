@@ -11,6 +11,7 @@ import { Faq } from './components/Faq';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { LevelTestModal } from './components/LevelTestModal';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export default function App() {
   const [selectedGoal, setSelectedGoal] = useState<string>('');
@@ -101,6 +102,9 @@ export default function App() {
         isOpen={isTestModalOpen}
         onClose={() => setIsTestModalOpen(false)}
       />
+
+      {/* Floating Scroll to Top Button */}
+      <ScrollToTop />
     </div>
   );
 }

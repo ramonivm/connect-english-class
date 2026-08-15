@@ -25,9 +25,9 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Logotipo */}
         <div className="flex justify-center mb-12 md:mb-16">
           <img
-            src="/assets/sector1.webp"
+            src="/logoca.webp"
             alt="Connect English Class"
-            className="w-[250px] h-[99px] object-contain"
+            className="w-[250px] h-auto object-contain"
           />
         </div>
 
