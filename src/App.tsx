@@ -12,6 +12,7 @@ import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { LevelTestModal } from './components/LevelTestModal';
 import { ScrollToTop } from './components/ScrollToTop';
+import { RevealOnScroll } from './components/RevealOnScroll';
 
 export default function App() {
   const [selectedGoal, setSelectedGoal] = useState<string>('');
@@ -65,33 +66,49 @@ export default function App() {
         />
 
         {/* 3. Qué es Connect Class */}
-        <AboutConnect />
+        <RevealOnScroll direction="up">
+          <AboutConnect />
+        </RevealOnScroll>
 
         {/* 4. Qué diferencia a Connect Class */}
-        <Differentiators />
+        <RevealOnScroll direction="up">
+          <Differentiators />
+        </RevealOnScroll>
 
         {/* 5. Metodología */}
-        <Methodology />
+        <RevealOnScroll direction="up">
+          <Methodology />
+        </RevealOnScroll>
 
         {/* 6. Objetivos de aprendizaje */}
-        <LearningGoals onSelectGoal={handleGoalSelect} />
+        <RevealOnScroll direction="up">
+          <LearningGoals onSelectGoal={handleGoalSelect} />
+        </RevealOnScroll>
 
         {/* 7. Tipos y modalidades de clases */}
-        <ClassFormats onSelectFormat={handleFormatSelect} />
+        <RevealOnScroll direction="up">
+          <ClassFormats onSelectFormat={handleFormatSelect} />
+        </RevealOnScroll>
 
         {/* 8. Cómo funciona */}
-        <HowItWorks onCtaClick={scrollToContact} />
+        <RevealOnScroll direction="up">
+          <HowItWorks onCtaClick={scrollToContact} />
+        </RevealOnScroll>
 
         {/* 9. Preguntas Frecuentes */}
-        <Faq onOpenTest={() => setIsTestModalOpen(true)} />
+        <RevealOnScroll direction="up">
+          <Faq onOpenTest={() => setIsTestModalOpen(true)} />
+        </RevealOnScroll>
 
         {/* 10. Contacto Final */}
-        <ContactForm
-          initialGoal={selectedGoal}
-          initialFormat={selectedFormat}
-          initialModality={selectedModality}
-          onOpenTest={() => setIsTestModalOpen(true)}
-        />
+        <RevealOnScroll direction="up">
+          <ContactForm
+            initialGoal={selectedGoal}
+            initialFormat={selectedFormat}
+            initialModality={selectedModality}
+            onOpenTest={() => setIsTestModalOpen(true)}
+          />
+        </RevealOnScroll>
       </main>
 
       {/* 11. Pie de página (Footer) */}
