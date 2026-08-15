@@ -21,16 +21,6 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-slate-blue/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Logotipo */}
-        <div className="flex justify-center mb-12 md:mb-16">
-          <img
-            src="/logoca.webp"
-            alt="Connect English Class"
-            className="w-[250px] h-auto object-contain"
-          />
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Main Hero Text Content */}
