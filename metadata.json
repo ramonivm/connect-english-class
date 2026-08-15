@@ -1,0 +1,6 @@
+{
+  "name": "Connect English Class",
+  "description": "Sitio web oficial One Page para clases de inglés personalizadas individuales y grupales.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

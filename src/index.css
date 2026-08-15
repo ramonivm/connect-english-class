@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-navy-dark: #0B132B;
+    --color-navy-main: #1C2541;
+    --color-slate-blue: #3A506B;
+    --color-coral-main: #FF5A5F;
+    --color-coral-hover: #E0484D;
+  }
+}
+
+.font-display {
+  font-family: 'Oswald', 'Roboto Condensed', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-sans {
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar and smooth transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom glass and badge styles */
+.bg-navy-dark {
+  background-color: #0B132B;
+}
+
+.bg-navy-main {
+  background-color: #1C2541;
+}
+
+.bg-slate-blue {
+  background-color: #3A506B;
+}
+
+.bg-coral-500 {
+  background-color: #FF5A5F;
+}
+
+.bg-coral-600 {
+  background-color: #E0484D;
+}
+
+.text-navy-dark {
+  color: #0B132B;
+}
+
+.text-slate-blue {
+  color: #3A506B;
+}
+
+.text-coral-500 {
+  color: #FF5A5F;
+}
+
+.border-coral-500 {
+  border-color: #FF5A5F;
+}
+
+.focus-ring-coral {
+  outline-color: #FF5A5F;
+}
+
