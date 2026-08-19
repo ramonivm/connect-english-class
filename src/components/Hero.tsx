@@ -14,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       id="inicio"
-      className="relative pt-28 pb-20 md:pt-36 md:pb-28 bg-[#0B132B] text-white overflow-hidden"
+      className="relative pt-[92px] pb-20 md:pt-[124px] md:pb-28 bg-[#0B132B] text-white overflow-hidden"
     >
       {/* Background Glow Accents */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-coral-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -26,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({
           <img
             src="/logoca.webp"
             alt="Connect English Class"
-            className="w-[300px] h-auto object-contain"
+            className="w-[260px] h-auto object-contain"
           />
         </div>
 

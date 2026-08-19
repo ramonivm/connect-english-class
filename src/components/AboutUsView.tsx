@@ -47,10 +47,6 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({
               <ArrowLeft className="w-4 h-4 text-coral-400 group-hover:-translate-x-1 transition-transform" />
               <span>Volver a la página principal</span>
             </button>
-
-            <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold hidden sm:inline-block">
-              Connect English Class
-            </span>
           </div>
 
           <div className="space-y-4 max-w-3xl">
@@ -60,7 +56,7 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.15]">
-              Quiénes Somos
+              Nosotros
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed">

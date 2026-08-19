@@ -92,11 +92,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navLinks = [
     { name: 'Inicio', href: '#inicio' },
-    { name: 'Quiénes Somos', href: '#quienes-somos', isAboutUs: true },
+    { name: 'Nosotros', href: '#quienes-somos', isAboutUs: true },
     { name: 'Metodología', href: '#metodologia' },
     { name: 'Clases', href: '#clases' },
     { name: 'Cómo funciona', href: '#como-funciona' },
-    { name: 'Preguntas frecuentes', href: '#faq' },
+    { name: '¿Preguntas?', href: '#faq' },
     { name: 'Contacto', href: '#contacto' },
   ];
 
@@ -140,35 +140,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <polygon points="38,55 47,67 47,77 38,77" fill="currentColor" />
                 </svg>
               </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl sm:text-2xl text-white tracking-wide leading-none">
-                  Connect English Class
-                </span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-300 font-semibold mt-0.5">
-                  Clases Personalizadas
-                </span>
-              </div>
+              <span className="font-display font-bold text-xl sm:text-2xl text-white tracking-wide leading-none">
+                Connect English Class
+              </span>
             </a>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-              {navLinks.map((link) => {
-                const isActive = link.isAboutUs && currentView === 'about-us';
-                return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all ${
-                      isActive
-                        ? 'text-white bg-coral-500/20 border border-coral-500/40'
-                        : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                );
-              })}
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs)}
+                  className="px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800/60 transition-all"
+                >
+                  {link.name}
+                </a>
+              ))}
             </nav>
 
             {/* Desktop Call To Action */}
@@ -178,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={onCtaClick}
                 className="bg-coral-500 hover:bg-coral-600 text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-lg hover:shadow-coral-500/20 transition-all transform hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
               >
-                <span>Quiero comenzar</span>
+                <span>Comenzar</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -260,24 +248,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Nav Items */}
           <nav className="mt-6 flex flex-col space-y-1.5">
-            {navLinks.map((link) => {
-              const isActive = link.isAboutUs && currentView === 'about-us';
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs)}
-                  className={`flex items-center justify-between px-3.5 py-3 rounded-xl font-medium text-base transition-colors group ${
-                    isActive
-                      ? 'text-white bg-coral-500/20 border border-coral-500/40'
-                      : 'text-slate-200 hover:text-white hover:bg-slate-800/80'
-                  }`}
-                >
-                  <span>{link.name}</span>
-                  <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-coral-400 group-hover:translate-x-0.5 transition-all" />
-                </a>
-              );
-            })}
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs)}
+                className="flex items-center justify-between px-3.5 py-3 rounded-xl font-medium text-base text-slate-200 hover:text-white hover:bg-slate-800/80 transition-colors group"
+              >
+                <span>{link.name}</span>
+                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-coral-400 group-hover:translate-x-0.5 transition-all" />
+              </a>
+            ))}
           </nav>
         </div>
 
@@ -301,7 +282,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }}
             className="w-full bg-coral-500 hover:bg-coral-600 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg shadow-coral-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all transform active:scale-[0.98]"
           >
-            <span>Quiero comenzar</span>
+            <span>Comenzar</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

@@ -41,11 +41,11 @@ export const Footer: React.FC<FooterProps> = ({
 
   const navLinks = [
     { name: 'Inicio', href: '#inicio' },
-    { name: 'Quiénes Somos', href: '#quienes-somos', isAboutUs: true },
+    { name: 'Nosotros', href: '#quienes-somos', isAboutUs: true },
     { name: 'Metodología', href: '#metodologia' },
     { name: 'Clases', href: '#clases' },
     { name: 'Cómo funciona', href: '#como-funciona' },
-    { name: 'Preguntas frecuentes', href: '#faq' },
+    { name: '¿Preguntas?', href: '#faq' },
     { name: 'Contacto', href: '#contacto' },
   ];
 
