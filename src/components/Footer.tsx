@@ -1,11 +1,47 @@
 import React from 'react';
-import { BookOpen, Mail, Phone, MapPin, Info } from 'lucide-react';
+import { BookOpen, Mail, MapPin, Info } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateAboutUs?: () => void;
+  onNavigateHome?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({
+  onNavigateAboutUs,
+  onNavigateHome,
+}) => {
   const currentYear = new Date().getFullYear();
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    isAboutUs?: boolean
+  ) => {
+    if (isAboutUs) {
+      e.preventDefault();
+      if (onNavigateAboutUs) {
+        onNavigateAboutUs();
+      }
+      return;
+    }
+
+    if (onNavigateHome) {
+      onNavigateHome();
+      setTimeout(() => {
+        const targetId = href.replace('#', '');
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 80);
+    }
+  };
 
   const navLinks = [
     { name: 'Inicio', href: '#inicio' },
+    { name: 'Quiénes Somos', href: '#quienes-somos', isAboutUs: true },
     { name: 'Metodología', href: '#metodologia' },
     { name: 'Clases', href: '#clases' },
     { name: 'Cómo funciona', href: '#como-funciona' },
@@ -20,7 +56,11 @@ export const Footer: React.FC = () => {
           
           {/* Logo & Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <a href="#inicio" className="flex items-center gap-2.5 inline-block">
+            <a
+              href="#inicio"
+              onClick={(e) => handleLinkClick(e, '#inicio')}
+              className="flex items-center gap-2.5 inline-block cursor-pointer"
+            >
               <div className="w-10 h-10 rounded-xl bg-coral-500 flex items-center justify-center text-white shadow-md">
                 <BookOpen className="w-5 h-5" />
               </div>
@@ -48,7 +88,8 @@ export const Footer: React.FC = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="hover:text-white hover:underline transition-colors text-slate-400"
+                    onClick={(e) => handleLinkClick(e, link.href, link.isAboutUs)}
+                    className="hover:text-white hover:underline transition-colors text-slate-400 cursor-pointer"
                   >
                     {link.name}
                   </a>
@@ -57,13 +98,12 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Contact Details Marker (Required by prompt) */}
+          {/* Contact Details Marker */}
           <div className="md:col-span-4 space-y-3">
             <h4 className="font-display font-bold text-base text-white uppercase tracking-wider">
               Información de Contacto
             </h4>
 
-            {/* Prompt Marker Requirement */}
             <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 space-y-2 text-xs">
               <div className="flex items-center gap-2 text-coral-400 font-semibold font-mono">
                 <Info className="w-4 h-4 shrink-0" />
@@ -92,7 +132,11 @@ export const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {currentYear} Connect English Class. Todos los derechos reservados.</p>
           <div className="flex items-center gap-6">
-            <a href="#inicio" className="hover:text-slate-300 transition-colors">
+            <a
+              href="#inicio"
+              onClick={(e) => handleLinkClick(e, '#inicio')}
+              className="hover:text-slate-300 transition-colors cursor-pointer"
+            >
               Volver arriba ↑
             </a>
           </div>

@@ -3,9 +3,17 @@ import { Menu, X, ArrowRight, ChevronRight, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   onCtaClick: () => void;
+  onNavigateAboutUs?: () => void;
+  onNavigateHome?: () => void;
+  currentView?: 'home' | 'about-us';
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onCtaClick,
+  onNavigateAboutUs,
+  onNavigateHome,
+  currentView = 'home',
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -40,8 +48,51 @@ export const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [mobileMenuOpen]);
 
+  const handleNavLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    isAboutUsLink?: boolean
+  ) => {
+    setMobileMenuOpen(false);
+
+    if (isAboutUsLink) {
+      e.preventDefault();
+      if (onNavigateAboutUs) {
+        onNavigateAboutUs();
+      }
+      return;
+    }
+
+    if (currentView === 'about-us') {
+      e.preventDefault();
+      if (onNavigateHome) {
+        onNavigateHome();
+        // Allow state switch to render home before scrolling to element
+        setTimeout(() => {
+          const targetId = href.replace('#', '');
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }, 80);
+      }
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMobileMenuOpen(false);
+    if (currentView === 'about-us' && onNavigateHome) {
+      e.preventDefault();
+      onNavigateHome();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const navLinks = [
     { name: 'Inicio', href: '#inicio' },
+    { name: 'Quiénes Somos', href: '#quienes-somos', isAboutUs: true },
     { name: 'Metodología', href: '#metodologia' },
     { name: 'Clases', href: '#clases' },
     { name: 'Cómo funciona', href: '#como-funciona' },
@@ -65,7 +116,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
             <a
               href="#inicio"
               id="nav-logo"
-              className="flex items-center gap-2.5 group focus:outline-none"
+              onClick={handleLogoClick}
+              className="flex items-center gap-2.5 group focus:outline-none cursor-pointer"
               aria-label="Connect English Class"
             >
               <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-coral-500 flex items-center justify-center shadow-md group-hover:scale-105 group-hover:bg-coral-600 transition-all duration-300 shrink-0">
@@ -100,15 +152,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800/60 transition-all"
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = link.isAboutUs && currentView === 'about-us';
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs)}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all ${
+                      isActive
+                        ? 'text-white bg-coral-500/20 border border-coral-500/40'
+                        : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
             </nav>
 
             {/* Desktop Call To Action */}
@@ -200,17 +260,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
 
           {/* Nav Items */}
           <nav className="mt-6 flex flex-col space-y-1.5">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3.5 py-3 rounded-xl text-slate-200 hover:text-white hover:bg-slate-800/80 font-medium text-base transition-colors group"
-              >
-                <span>{link.name}</span>
-                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-coral-400 group-hover:translate-x-0.5 transition-all" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.isAboutUs && currentView === 'about-us';
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs)}
+                  className={`flex items-center justify-between px-3.5 py-3 rounded-xl font-medium text-base transition-colors group ${
+                    isActive
+                      ? 'text-white bg-coral-500/20 border border-coral-500/40'
+                      : 'text-slate-200 hover:text-white hover:bg-slate-800/80'
+                  }`}
+                >
+                  <span>{link.name}</span>
+                  <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-coral-400 group-hover:translate-x-0.5 transition-all" />
+                </a>
+              );
+            })}
           </nav>
         </div>
 
