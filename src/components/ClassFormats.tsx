@@ -84,62 +84,62 @@ export const ClassFormats: React.FC<ClassFormatsProps> = ({ onSelectFormat }) =>
         </div>
 
         {/* SUBSECTION 1: Group Size Options */}
-        <div className="mt-16">
-          <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-300">
-            <h3 className="font-display text-2xl font-bold text-[#0B132B]">
+        <div className="mt-10 sm:mt-12">
+          <div className="flex items-center gap-3 mb-4 pb-2 border-b border-slate-300/80">
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#0B132B]">
               1. Por cantidad de integrantes
             </h3>
             <span className="text-xs text-slate-500 font-medium">(Selecciona tu preferencia)</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {CLASS_FORMATS.map((fmt) => {
-              const icon = formatIconMap[fmt.iconName] || <User className="w-6 h-6" />;
+              const icon = formatIconMap[fmt.iconName] || <User className="w-5 h-5" />;
               const isSelected = selectedFormat === fmt.title;
               return (
                 <div
                   key={fmt.id}
                   onClick={() => setSelectedFormat(fmt.title)}
-                  className={`relative rounded-2xl p-8 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                  className={`relative rounded-2xl p-5 sm:p-6 transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-white border-2 border-coral-500 shadow-xl ring-2 ring-coral-500/20'
+                      ? 'bg-white border-2 border-coral-500 shadow-lg ring-2 ring-coral-500/20'
                       : 'bg-white border border-slate-200 hover:border-slate-400 hover:shadow-md'
                   }`}
                 >
                   {fmt.badge && (
-                    <span className="absolute -top-3 right-6 bg-coral-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                    <span className="absolute -top-2.5 right-5 bg-coral-500 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-sm">
                       {fmt.badge}
                     </span>
                   )}
 
                   <div>
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between mb-3">
                       <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
+                        className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                           isSelected ? 'bg-coral-500 text-white' : 'bg-slate-100 text-[#0B132B]'
                         }`}
                       >
                         {icon}
                       </div>
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">
+                      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700">
                         {fmt.capacity}
                       </span>
                     </div>
 
-                    <h4 className="font-display text-2xl font-bold text-[#0B132B] mb-1">
+                    <h4 className="font-display text-xl font-bold text-[#0B132B] mb-0.5">
                       {fmt.title}
                     </h4>
 
-                    <p className="text-xs font-semibold text-coral-600 mb-3">
+                    <p className="text-xs font-semibold text-coral-600 mb-2">
                       {fmt.subtitle}
                     </p>
 
-                    <p className="text-sm text-slate-600 leading-relaxed font-sans mb-4">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans mb-3">
                       {fmt.description}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100">
+                  <div className="pt-3 border-t border-slate-100">
                     <p className="text-xs text-slate-500">
                       <strong className="text-slate-700">Ideal para:</strong> {fmt.recommendedFor}
                     </p>
@@ -151,39 +151,39 @@ export const ClassFormats: React.FC<ClassFormatsProps> = ({ onSelectFormat }) =>
         </div>
 
         {/* SUBSECTION 2: Modality Options */}
-        <div className="mt-16">
-          <div className="flex items-center gap-3 mb-8 pb-3 border-b border-slate-300">
-            <h3 className="font-display text-2xl font-bold text-[#0B132B]">
+        <div className="mt-8 sm:mt-10">
+          <div className="flex items-center gap-3 mb-4 pb-2 border-b border-slate-300/80">
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#0B132B]">
               2. Por modalidad de cursada
             </h3>
             <span className="text-xs text-slate-500 font-medium">(Elige según tu ubicación)</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {CLASS_MODALITIES.map((mod) => {
-              const icon = modalityIconMap[mod.iconName] || <Laptop className="w-6 h-6" />;
+              const icon = modalityIconMap[mod.iconName] || <Laptop className="w-5 h-5" />;
               const isSelected = selectedModality === mod.title;
               return (
                 <div
                   key={mod.id}
                   onClick={() => setSelectedModality(mod.title)}
-                  className={`rounded-2xl p-8 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                  className={`rounded-2xl p-5 sm:p-6 transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-white border-2 border-coral-500 shadow-xl ring-2 ring-coral-500/20'
+                      ? 'bg-white border-2 border-coral-500 shadow-lg ring-2 ring-coral-500/20'
                       : 'bg-white border border-slate-200 hover:border-slate-400 hover:shadow-md'
                   }`}
                 >
                   <div>
-                    <div className="flex items-center gap-4 mb-4">
+                    <div className="flex items-center gap-3 mb-3">
                       <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                        className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
                           isSelected ? 'bg-coral-500 text-white' : 'bg-slate-100 text-[#0B132B]'
                         }`}
                       >
                         {icon}
                       </div>
                       <div>
-                        <h4 className="font-display text-2xl font-bold text-[#0B132B]">
+                        <h4 className="font-display text-xl font-bold text-[#0B132B] leading-snug">
                           {mod.title}
                         </h4>
                         <span className="text-xs text-slate-500 font-medium">
@@ -192,21 +192,21 @@ export const ClassFormats: React.FC<ClassFormatsProps> = ({ onSelectFormat }) =>
                       </div>
                     </div>
 
-                    <p className="text-sm text-slate-600 leading-relaxed font-sans mb-6">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans mb-3">
                       {mod.description}
                     </p>
 
-                    <div className="space-y-2.5 mb-6">
+                    <div className="space-y-1.5 mb-3">
                       {mod.features.map((feat, idx) => (
-                        <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700">
-                          <CheckCircle2 className="w-4 h-4 text-coral-500 shrink-0" />
+                        <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-700">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-coral-500 shrink-0" />
                           <span>{feat}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                     <span>
                       {mod.id === 'online' ? 'Plataformas interactivas' : 'En tu domicilio o punto acordado'}
                     </span>

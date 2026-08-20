@@ -21,6 +21,9 @@ import {
   ArrowLeft,
   Check,
   ClipboardCheck,
+  Star,
+  ExternalLink,
+  Award,
 } from 'lucide-react';
 
 interface ContactFormProps {
@@ -219,6 +222,73 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
           {/* Right Column Multi-step Quiz Form */}
           <div className="lg:col-span-7">
+            {/* Teacher Profile / Social Proof Card */}
+            <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-md mb-6 relative overflow-hidden">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+                {/* Profile Photo */}
+                <div className="relative shrink-0">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-coral-500 p-0.5 shadow-md overflow-hidden bg-slate-100">
+                    <img
+                      src="https://c.superprof.com/i/m/27884527/300/20260811073526/27884527.webp"
+                      alt="Profesor Diego"
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-coral-500 text-white rounded-full flex items-center justify-center shadow-sm">
+                    <Award className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+
+                {/* Profile Details */}
+                <div className="flex-1 space-y-1.5">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-coral-50 text-coral-600 text-[11px] font-bold uppercase tracking-wider">
+                      Profesor destacado en Superprof
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <h3 className="font-display text-lg sm:text-xl font-bold text-[#0B132B]">
+                      Diego <span className="text-sm font-normal text-slate-500">· Conoce a tu profesor</span>
+                    </h3>
+                  </div>
+
+                  {/* Rating and Reviews */}
+                  <div className="flex items-center gap-2 flex-wrap text-xs sm:text-sm">
+                    <div className="flex items-center text-amber-400 gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <span className="font-bold text-slate-800">5.0</span>
+                    <span className="text-slate-500 text-xs">
+                      (Basado en más de 185 opiniones de estudiantes)
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pt-1">
+                    Más de 11 años impartiendo clases de inglés a estudiantes sin límite de edad. Clases 1 a 1 con la metodología Connect.
+                  </p>
+                </div>
+              </div>
+
+              {/* Call to Action Button */}
+              <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+                <span className="text-xs text-slate-400 hidden sm:inline">
+                  Experiencia comprobada y reseñas verificadas
+                </span>
+                <a
+                  href="https://www.superprof.cl/mas-anos-impartiendo-clases-ingles-estudiantes-desde-los-anos-sin-limite-edad-clases-particulares-online.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-[#0B132B] hover:text-coral-600 text-xs sm:text-sm font-semibold border border-slate-200 hover:border-slate-300 shadow-sm transition-all group cursor-pointer"
+                >
+                  <span>Ver perfil y reseñas en Superprof</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-coral-500 group-hover:translate-x-0.5 transition-all" />
+                </a>
+              </div>
+            </div>
+
             <div className="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden">
               
               {/* Progress Bar Container */}

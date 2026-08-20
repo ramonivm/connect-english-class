@@ -1,20 +1,37 @@
 import React from 'react';
 import { HERO_DATA } from '../data/landingData';
-import { ArrowRight, CheckCircle2, Users, Monitor, MapPin } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Users, Monitor, MapPin, Star, ExternalLink } from 'lucide-react';
 
 interface HeroProps {
   onConsultClassesClick: () => void;
   onMethodologyClick: () => void;
+  onNavigateTestimonials?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   onConsultClassesClick,
   onMethodologyClick,
+  onNavigateTestimonials,
 }) => {
+  const miniTestimonials = [
+    {
+      quote: 'Excelente profesor, prepara material según lo que necesitas.',
+      author: 'Paulina',
+    },
+    {
+      quote: 'Clases súper dinámicas e interactivas. Lo recomiendo 100%.',
+      author: 'Jose',
+    },
+    {
+      quote: 'Muy paciente y claro para explicar.',
+      author: 'Javiera',
+    },
+  ];
+
   return (
     <section
       id="inicio"
-      className="relative pt-[92px] pb-20 md:pt-[124px] md:pb-28 bg-[#0B132B] text-white overflow-hidden"
+      className="relative pt-[92px] pb-16 md:pt-[124px] md:pb-20 bg-[#0B132B] text-white overflow-hidden"
     >
       {/* Background Glow Accents */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-coral-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -139,6 +156,59 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
         </div>
+
+        {/* Mini Testimonials Strip */}
+        <div className="mt-12 pt-8 border-t border-slate-800/80">
+          <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-5 sm:p-6 backdrop-blur-sm">
+            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6">
+              
+              {/* Testimonials Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
+                {miniTestimonials.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/50 flex flex-col justify-between"
+                  >
+                    <div className="flex items-center gap-0.5 mb-2 text-amber-400">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-xs sm:text-[13px] text-slate-200 italic leading-snug mb-2">
+                      "{item.quote}"
+                    </p>
+                    <span className="text-[11px] font-semibold text-coral-400 tracking-wide uppercase">
+                      – {item.author}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Link to Testimonials Page */}
+              <div className="shrink-0 flex items-center justify-center xl:justify-end xl:pl-4 xl:border-l xl:border-slate-800">
+                {onNavigateTestimonials ? (
+                  <button
+                    onClick={onNavigateTestimonials}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-coral-500/10 hover:bg-coral-500/20 text-coral-400 hover:text-coral-300 border border-coral-500/30 text-xs sm:text-sm font-semibold transition-all group shadow-sm text-center cursor-pointer"
+                  >
+                    <span>Leer las más de 185 opiniones -&gt;</span>
+                    <ArrowRight className="w-4 h-4 text-coral-400 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                ) : (
+                  <a
+                    href="#testimonios"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-coral-500/10 hover:bg-coral-500/20 text-coral-400 hover:text-coral-300 border border-coral-500/30 text-xs sm:text-sm font-semibold transition-all group shadow-sm text-center"
+                  >
+                    <span>Leer las más de 185 opiniones -&gt;</span>
+                    <ArrowRight className="w-4 h-4 text-coral-400 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                )}
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

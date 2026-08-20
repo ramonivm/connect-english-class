@@ -3,11 +3,13 @@ import { BookOpen, Mail, MapPin, Info } from 'lucide-react';
 
 interface FooterProps {
   onNavigateAboutUs?: () => void;
+  onNavigateTestimonials?: () => void;
   onNavigateHome?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigateAboutUs,
+  onNavigateTestimonials,
   onNavigateHome,
 }) => {
   const currentYear = new Date().getFullYear();
@@ -15,12 +17,21 @@ export const Footer: React.FC<FooterProps> = ({
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
-    isAboutUs?: boolean
+    isAboutUs?: boolean,
+    isTestimonials?: boolean
   ) => {
     if (isAboutUs) {
       e.preventDefault();
       if (onNavigateAboutUs) {
         onNavigateAboutUs();
+      }
+      return;
+    }
+
+    if (isTestimonials) {
+      e.preventDefault();
+      if (onNavigateTestimonials) {
+        onNavigateTestimonials();
       }
       return;
     }
@@ -45,6 +56,7 @@ export const Footer: React.FC<FooterProps> = ({
     { name: 'Metodología', href: '#metodologia' },
     { name: 'Clases', href: '#clases' },
     { name: 'Cómo funciona', href: '#como-funciona' },
+    { name: 'Testimonios', href: '#testimonios', isTestimonials: true },
     { name: '¿Preguntas?', href: '#faq' },
     { name: 'Contacto', href: '#contacto' },
   ];
@@ -70,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({
             </a>
 
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              Clases de inglés personalizadas e individuales o en grupos hiper-reducidos (1 a 3 estudiantes) en modalidad online y presencial según cobertura.
+              Clases de inglés personalizadas individuales o en formato dúo (1 o 2 estudiantes) en modalidad online y presencial según cobertura.
             </p>
 
             <p className="text-xs text-slate-500">
@@ -88,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href, link.isAboutUs)}
+                    onClick={(e) => handleLinkClick(e, link.href, link.isAboutUs, link.isTestimonials)}
                     className="hover:text-white hover:underline transition-colors text-slate-400 cursor-pointer"
                   >
                     {link.name}

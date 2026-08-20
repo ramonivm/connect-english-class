@@ -4,13 +4,15 @@ import { Menu, X, ArrowRight, ChevronRight, Sparkles } from 'lucide-react';
 interface NavbarProps {
   onCtaClick: () => void;
   onNavigateAboutUs?: () => void;
+  onNavigateTestimonials?: () => void;
   onNavigateHome?: () => void;
-  currentView?: 'home' | 'about-us';
+  currentView?: 'home' | 'about-us' | 'testimonials';
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onCtaClick,
   onNavigateAboutUs,
+  onNavigateTestimonials,
   onNavigateHome,
   currentView = 'home',
 }) => {
@@ -51,7 +53,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleNavLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
-    isAboutUsLink?: boolean
+    isAboutUsLink?: boolean,
+    isTestimonialsLink?: boolean
   ) => {
     setMobileMenuOpen(false);
 
@@ -63,7 +66,15 @@ export const Navbar: React.FC<NavbarProps> = ({
       return;
     }
 
-    if (currentView === 'about-us') {
+    if (isTestimonialsLink) {
+      e.preventDefault();
+      if (onNavigateTestimonials) {
+        onNavigateTestimonials();
+      }
+      return;
+    }
+
+    if (currentView !== 'home') {
       e.preventDefault();
       if (onNavigateHome) {
         onNavigateHome();
@@ -83,14 +94,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     setMobileMenuOpen(false);
-    if (currentView === 'about-us' && onNavigateHome) {
+    if (currentView !== 'home' && onNavigateHome) {
       e.preventDefault();
       onNavigateHome();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  const navLinks = [
+  const navLinks: { name: string; href: string; isAboutUs?: boolean; isTestimonials?: boolean }[] = [
     { name: 'Inicio', href: '#inicio' },
     { name: 'Nosotros', href: '#quienes-somos', isAboutUs: true },
     { name: 'Metodología', href: '#metodologia' },
@@ -151,7 +162,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs)}
+                  onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs, link.isTestimonials)}
                   className="px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800/60 transition-all"
                 >
                   {link.name}
@@ -252,7 +263,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <a
                 key={link.name}
                 href={link.href}
-                onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs)}
+                onClick={(e) => handleNavLinkClick(e, link.href, link.isAboutUs, link.isTestimonials)}
                 className="flex items-center justify-between px-3.5 py-3 rounded-xl font-medium text-base text-slate-200 hover:text-white hover:bg-slate-800/80 transition-colors group"
               >
                 <span>{link.name}</span>

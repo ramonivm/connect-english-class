@@ -14,10 +14,13 @@ import { LevelTestModal } from './components/LevelTestModal';
 import { ScrollToTop } from './components/ScrollToTop';
 import { RevealOnScroll } from './components/RevealOnScroll';
 import { AboutUsView } from './components/AboutUsView';
+import { TestimonialsView } from './components/TestimonialsView';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'about-us'>(() => {
-    return window.location.hash === '#quienes-somos' ? 'about-us' : 'home';
+  const [currentView, setCurrentView] = useState<'home' | 'about-us' | 'testimonials'>(() => {
+    if (window.location.hash === '#quienes-somos') return 'about-us';
+    if (window.location.hash === '#testimonios') return 'testimonials';
+    return 'home';
   });
 
   const [selectedGoal, setSelectedGoal] = useState<string>('');
@@ -30,7 +33,9 @@ export default function App() {
     const handleHashChange = () => {
       if (window.location.hash === '#quienes-somos') {
         setCurrentView('about-us');
-      } else if (currentView === 'about-us') {
+      } else if (window.location.hash === '#testimonios') {
+        setCurrentView('testimonials');
+      } else if (currentView === 'about-us' || currentView === 'testimonials') {
         setCurrentView('home');
       }
     };
@@ -45,9 +50,15 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const navigateToTestimonials = () => {
+    setCurrentView('testimonials');
+    window.location.hash = 'testimonios';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const navigateToHome = () => {
     setCurrentView('home');
-    if (window.location.hash === '#quienes-somos') {
+    if (window.location.hash === '#quienes-somos' || window.location.hash === '#testimonios') {
       window.history.pushState(null, '', window.location.pathname);
     }
   };
@@ -123,6 +134,7 @@ export default function App() {
       <Navbar
         onCtaClick={scrollToContact}
         onNavigateAboutUs={navigateToAboutUs}
+        onNavigateTestimonials={navigateToTestimonials}
         onNavigateHome={navigateToHome}
         currentView={currentView}
       />
@@ -136,12 +148,20 @@ export default function App() {
             onGoToClasses={scrollToClasses}
           />
         </main>
+      ) : currentView === 'testimonials' ? (
+        <main className="flex-grow">
+          <TestimonialsView
+            onBackToHome={navigateToHome}
+            onGoToContact={scrollToContact}
+          />
+        </main>
       ) : (
         <main className="flex-grow">
           {/* 2. Hero (Portada) */}
           <Hero
             onConsultClassesClick={scrollToClasses}
             onMethodologyClick={scrollToMethodology}
+            onNavigateTestimonials={navigateToTestimonials}
           />
 
           {/* 3. Qué es Connect Class */}
@@ -194,6 +214,7 @@ export default function App() {
       {/* 11. Pie de página (Footer) */}
       <Footer
         onNavigateAboutUs={navigateToAboutUs}
+        onNavigateTestimonials={navigateToTestimonials}
         onNavigateHome={navigateToHome}
       />
 
