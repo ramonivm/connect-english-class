@@ -12,7 +12,7 @@ export const HERO_DATA = {
   brand: 'Connect English Class',
   title: 'Clases de inglés diseñadas para ti',
   supportText:
-    'Aprende a tu ritmo, trabaja en tus propios objetivos y recibe el acompañamiento necesario para incorporar realmente lo aprendido. Clases personalizadas para una, dos o three personas, disponibles en modalidad online y presencial según cobertura.',
+    'Aprende a tu ritmo, trabaja en tus propios objetivos y recibe el acompañamiento necesario para incorporar realmente lo aprendido. Clases personalizadas para una o dos personas, disponibles en modalidad online y presencial según cobertura.',
   primaryCta: 'Consultar clases',
   secondaryCta: 'Conocer la metodología',
 };
@@ -28,7 +28,7 @@ export const ABOUT_DATA = {
       subtext: 'Acompañando a estudiantes en su proceso de aprendizaje.',
     },
     {
-      value: '1 a 3 personas',
+      value: '1 o 2 personas',
       label: 'Grupos hiper-reducidos',
       subtext: 'Atención focalizada y máxima participación verbal.',
     },
@@ -213,16 +213,6 @@ export const CLASS_FORMATS: ClassFormat[] = [
     recommendedFor: 'Parejas de estudio con objetivos afines o compañeros de trabajo.',
     iconName: 'Users',
   },
-  {
-    id: 'trio',
-    title: 'Clase para tres personas',
-    subtitle: 'Grupo reducido (3 personas)',
-    description:
-      'Espacio dinámico y colaborativo que simula entornos reales de interacción grupal sin perder la atención individualizada.',
-    capacity: '3 estudiantes',
-    recommendedFor: 'Grupos de trabajo o amigos que desean practicar debate e intercambio.',
-    iconName: 'UsersRound',
-  },
 ];
 
 export const CLASS_MODALITIES: ClassModality[] = [
@@ -271,7 +261,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
     stepNumber: 3,
     title: 'Definimos tus clases',
     description:
-      'Diseñamos una propuesta personalizada especificando formato (1, 2 o 3 personas), modalidad y propuesta horaria.',
+      'Diseñamos una propuesta personalizada especificando formato (1 o 2 personas), modalidad y propuesta horaria.',
   },
   {
     stepNumber: 4,
@@ -307,7 +297,7 @@ export const FAQ_ITEMS: FAQItem[] = [
     category: 'Grupos',
     question: '¿Puedo tomar clases con un amigo o compañero de trabajo?',
     answer:
-      '¡Sí! Ofrecemos modalidades para 2 y 3 personas. Lo ideal es que ambos tengan un nivel similar o un objetivo común.',
+      '¡Sí! Ofrecemos modalidades individuales y para 2 personas (formato Dúo). Lo ideal es que ambos tengan un nivel similar o un objetivo común.',
   },
   {
     id: 'faq-4',
@@ -321,6 +311,6 @@ export const FAQ_ITEMS: FAQItem[] = [
     category: 'Comercial',
     question: '¿Dónde puedo consultar la duración, precios y horarios?',
     answer:
-      'La duración de las clases, la grilla de precios y los horarios disponibles se coordinan en forma personalizada según la modalidad (1, 2 o 3 personas) e intensidades deseadas.',
+      'La duración de las clases, la grilla de precios y los horarios disponibles se coordinan en forma personalizada según el formato (1 o 2 personas) e intensidades deseadas.',
   },
 ];

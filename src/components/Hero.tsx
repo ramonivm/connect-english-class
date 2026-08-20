@@ -75,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
               <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-coral-500 shrink-0" />
-                <span>1 a 3 estudiantes</span>
+                <span>1 o 2 estudiantes</span>
               </div>
               <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-coral-500 shrink-0" />
@@ -132,7 +132,7 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Footer Indicator in Card */}
               <div className="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-400">
                 <span>Atención focalizada</span>
-                <span className="font-semibold text-coral-500">1, 2 o 3 alumnos</span>
+                <span className="font-semibold text-coral-500">1 o 2 alumnos</span>
               </div>
 
             </div>

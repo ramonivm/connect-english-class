@@ -531,7 +531,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                           >
                             <option value="Clase individual">Clase individual (1 persona)</option>
                             <option value="Clase para dos personas">Clase para dos personas (Dúo)</option>
-                            <option value="Clase para tres personas">Clase para tres personas (Trío)</option>
                           </select>
                         </div>
                       </div>

@@ -92,7 +92,7 @@ export const ClassFormats: React.FC<ClassFormatsProps> = ({ onSelectFormat }) =>
             <span className="text-xs text-slate-500 font-medium">(Selecciona tu preferencia)</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {CLASS_FORMATS.map((fmt) => {
               const icon = formatIconMap[fmt.iconName] || <User className="w-6 h-6" />;
               const isSelected = selectedFormat === fmt.title;
@@ -100,7 +100,7 @@ export const ClassFormats: React.FC<ClassFormatsProps> = ({ onSelectFormat }) =>
                 <div
                   key={fmt.id}
                   onClick={() => setSelectedFormat(fmt.title)}
-                  className={`relative rounded-2xl p-7 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                  className={`relative rounded-2xl p-8 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? 'bg-white border-2 border-coral-500 shadow-xl ring-2 ring-coral-500/20'
                       : 'bg-white border border-slate-200 hover:border-slate-400 hover:shadow-md'
@@ -126,7 +126,7 @@ export const ClassFormats: React.FC<ClassFormatsProps> = ({ onSelectFormat }) =>
                       </span>
                     </div>
 
-                    <h4 className="font-display text-xl font-bold text-[#0B132B] mb-1">
+                    <h4 className="font-display text-2xl font-bold text-[#0B132B] mb-1">
                       {fmt.title}
                     </h4>
 
