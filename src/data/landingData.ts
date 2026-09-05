@@ -3,6 +3,7 @@ import {
   MethodologyStep,
   LearningGoal,
   ClassFormat,
+  ClassPlan,
   ClassModality,
   HowItWorksStep,
   FAQItem,
@@ -12,8 +13,8 @@ export const HERO_DATA = {
   brand: 'Connect English Class',
   title: 'Clases de inglés diseñadas para ti',
   supportText:
-    'Aprende a tu ritmo, trabaja en tus propios objetivos y recibe el acompañamiento necesario para incorporar realmente lo aprendido. Clases personalizadas para una o dos personas, disponibles en modalidad online y presencial según cobertura.',
-  primaryCta: 'Consultar clases',
+    'Aprende a tu ritmo, trabaja en tus propios objetivos y recibe el acompañamiento necesario para incorporar realmente lo aprendido. Clases individuales 100% online interactivas.',
+  primaryCta: 'Ver planes y valores',
   secondaryCta: 'Conocer la metodología',
 };
 
@@ -28,9 +29,9 @@ export const ABOUT_DATA = {
       subtext: 'Acompañando a estudiantes en su proceso de aprendizaje.',
     },
     {
-      value: '1 o 2 personas',
-      label: 'Grupos hiper-reducidos',
-      subtext: 'Atención focalizada y máxima participación verbal.',
+      value: '1 estudiante',
+      label: 'Atención 1 a 1',
+      subtext: 'Atención 100% focalizada y máxima participación verbal.',
     },
     {
       value: 'Contenidos personalizados',
@@ -194,24 +195,82 @@ export const LEARNING_GOALS: LearningGoal[] = [
 export const CLASS_FORMATS: ClassFormat[] = [
   {
     id: 'individual',
-    title: 'Clase individual',
-    subtitle: '100% personalizada para 1 persona',
+    title: 'Clase Individual 100% Online',
+    subtitle: 'Atención exclusiva y 100% personalizada',
     description:
-      'El profesor enfocado únicamente en ti. Ideal si buscas un ritmo hiper-personalizado, preparar metas urgentes o resolver bloqueos específicos.',
+      'El profesor enfocado únicamente en ti mediante videollamada interactiva. Ideal si buscas un ritmo hiper-personalizado, preparar metas urgentes o resolver bloqueos específicos.',
     capacity: '1 estudiante',
-    recommendedFor: 'Quienes buscan atención exclusiva y flexibilidad máxima.',
+    recommendedFor: 'Quienes buscan atención exclusiva, flexibilidad máxima y resultados eficientes.',
     iconName: 'User',
-    badge: 'Más popular',
+    badge: 'Formato Exclusivo',
+  }
+];
+
+export const CLASS_PLANS: ClassPlan[] = [
+  {
+    id: 'quick-class',
+    name: 'Quick class',
+    duration: '30 min.',
+    durationPedagogical: '30 minutos cronológicos',
+    durationMinutes: 30,
+    price: '$ 21.000',
+    priceNumeric: 21000,
+    badge: 'Ágil & Dinámica',
+    popular: false,
+    description:
+      'Sesión ágil y concentrada de alta intensidad. Diseñada para mantener constancia, practicar conversación frecuente o resolver dudas puntuales con flexibilidad horaria.',
+    recommendedFor: 'Personas con agendas acotadas o que buscan práctica verbal continua.',
+    features: [
+      '100% Individual (1 estudiante)',
+      '30 min. de práctica activa',
+      'Modalidad 100% online en vivo',
+      'Ideal para agendas apretadas',
+      'Corrección y feedback en tiempo real',
+    ],
   },
   {
-    id: 'duo',
-    title: 'Clase para dos personas',
-    subtitle: 'Formato Dúo (2 personas)',
+    id: 'clase-normal',
+    name: 'Clase Normal',
+    duration: '1 hr. Pedagógica (45 min.)',
+    durationPedagogical: '1 hora pedagógica (45 minutos)',
+    durationMinutes: 45,
+    price: '$ 27.000',
+    priceNumeric: 27000,
+    badge: 'Más Elegida',
+    popular: true,
     description:
-      'Aprende en pareja con un amigo, familiar o colega de nivel similar. Combina dinamismo conversacional con atención cercana.',
-    capacity: '2 estudiantes',
-    recommendedFor: 'Parejas de estudio con objetivos afines o compañeros de trabajo.',
-    iconName: 'Users',
+      'El formato estándar balanceado para un avance integral. Permite desarrollar gramática contextualizada, vocabulario relevante y conversación guiada en cada sesión.',
+    recommendedFor: 'Quienes buscan un avance equilibrado y constante en todas las habilidades.',
+    features: [
+      '100% Individual (1 estudiante)',
+      '1 hr. Pedagógica (45 min.)',
+      'Modalidad 100% online en vivo',
+      'Estructura integral y progresiva',
+      'Material digital adaptado a tus metas',
+      'Seguimiento y tareas recomendadas',
+    ],
+  },
+  {
+    id: 'clase-doble',
+    name: 'Clase Doble',
+    duration: '2 hrs. Pedagógicas (90 min.)',
+    durationPedagogical: '2 horas pedagógicas (90 minutos)',
+    durationMinutes: 90,
+    price: '$ 45.000',
+    priceNumeric: 45000,
+    badge: 'Inmersión Intensiva',
+    popular: false,
+    description:
+      'Sesión de duración extendida (el doble de tiempo que la clase normal) para inmersión profunda. Permite avanzar el doble en cada encuentro manteniendo siempre la atención 1 a 1.',
+    recommendedFor: 'Metas urgentes, preparación intensiva de entrevistas, viajes o presentaciones.',
+    features: [
+      '100% Individual (1 estudiante)',
+      '2 hrs. Pedagógicas (90 min.)',
+      'Sesión extendida para inmersión profunda',
+      'Modalidad 100% online en vivo',
+      'Inmersión y práctica conversacional guiada',
+      'Progreso acelerado por sesión',
+    ],
   },
 ];
 
@@ -228,19 +287,6 @@ export const CLASS_MODALITIES: ClassModality[] = [
       'Disponible desde cualquier ubicación con conexión.',
     ],
     iconName: 'Laptop',
-  },
-  {
-    id: 'presencial',
-    title: 'Modalidad Presencial',
-    description:
-      'Sesiones cara a cara con el profesor en ubicaciones convenientes según disponibilidad de cobertura.',
-    features: [
-      'Contacto humano directo e interacción presencial.',
-      'Ambiente cómodo e inmersivo.',
-      'Sujeto a cobertura geográfica confirmada previa consulta.',
-      'Ideal para quienes prefieren la dinámica tradicional.',
-    ],
-    iconName: 'MapPin',
   },
 ];
 
@@ -261,7 +307,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
     stepNumber: 3,
     title: 'Definimos tus clases',
     description:
-      'Diseñamos una propuesta personalizada especificando formato (1 o 2 personas), modalidad y propuesta horaria.',
+      'Diseñamos una propuesta personalizada especificando la modalidad online y la propuesta horaria.',
   },
   {
     stepNumber: 4,
@@ -286,18 +332,11 @@ export const FAQ_ITEMS: FAQItem[] = [
       'Puedes comenzar desde cualquier nivel, incluso desde cero absoluto. Adaptamos el ritmo y los materiales según tus conocimientos previos.',
   },
   {
-    id: 'faq-2',
-    category: 'Modalidad',
-    question: '¿Cuál es la diferencia entre clases Online y Presenciales?',
-    answer:
-      'Las clases Online se imparten por videollamada interactiva sin importar dónde te encuentres. Las clases Presenciales se dictan cara a cara según la cobertura geográfica acordada.',
-  },
-  {
     id: 'faq-3',
     category: 'Grupos',
-    question: '¿Puedo tomar clases con un amigo o compañero de trabajo?',
+    question: '¿Ofrecen clases grupales?',
     answer:
-      '¡Sí! Ofrecemos modalidades individuales y para 2 personas (formato Dúo). Lo ideal es que ambos tengan un nivel similar o un objetivo común.',
+      'Nos especializamos exclusivamente en clases individuales (1 estudiante). De esta manera, garantizamos una atención personalizada y el progreso al ritmo único de cada alumno.',
   },
   {
     id: 'faq-4',
@@ -309,8 +348,8 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     id: 'faq-5',
     category: 'Comercial',
-    question: '¿Dónde puedo consultar la duración, precios y horarios?',
+    question: '¿Cuáles son los valores y duración de las clases?',
     answer:
-      'La duración de las clases, la grilla de precios y los horarios disponibles se coordinan en forma personalizada según el formato (1 o 2 personas) e intensidades deseadas.',
+      'Ofrecemos 3 planes con valores transparentes: Quick class de 30 min ($ 21.000), Clase Normal de 1 hr. Pedagógica / 45 min ($ 27.000) y Clase Doble de 2 hrs. Pedagógicas / 90 min ($ 45.000). Todas son individuales y 100% online.',
   },
 ];

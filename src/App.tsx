@@ -6,7 +6,7 @@ import { Differentiators } from './components/Differentiators';
 import { Methodology } from './components/Methodology';
 import { LearningGoals } from './components/LearningGoals';
 import { ClassFormats } from './components/ClassFormats';
-import { HowItWorks } from './components/HowItWorks';
+import { HowItWorksModal } from './components/HowItWorksModal';
 import { Faq } from './components/Faq';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
@@ -24,9 +24,9 @@ export default function App() {
   });
 
   const [selectedGoal, setSelectedGoal] = useState<string>('');
-  const [selectedFormat, setSelectedFormat] = useState<string>('');
-  const [selectedModality, setSelectedModality] = useState<string>('');
+  const [selectedPlan, setSelectedPlan] = useState<string>('');
   const [isTestModalOpen, setIsTestModalOpen] = useState<boolean>(false);
+  const [isHowItWorksModalOpen, setIsHowItWorksModalOpen] = useState<boolean>(false);
 
   // Sync hash routing
   useEffect(() => {
@@ -122,9 +122,12 @@ export default function App() {
     scrollToContact();
   };
 
-  const handleFormatSelect = (formatTitle: string, modalityTitle: string) => {
-    setSelectedFormat(formatTitle);
-    setSelectedModality(modalityTitle);
+  const handleConsultClick = () => {
+    scrollToContact();
+  };
+
+  const handlePlanSelect = (planName: string) => {
+    setSelectedPlan(planName);
     scrollToContact();
   };
 
@@ -176,7 +179,7 @@ export default function App() {
 
           {/* 5. Metodología */}
           <RevealOnScroll direction="up">
-            <Methodology />
+            <Methodology onOpenHowItWorks={() => setIsHowItWorksModalOpen(true)} />
           </RevealOnScroll>
 
           {/* 6. Objetivos de aprendizaje */}
@@ -186,15 +189,13 @@ export default function App() {
 
           {/* 7. Tipos y modalidades de clases */}
           <RevealOnScroll direction="up">
-            <ClassFormats onSelectFormat={handleFormatSelect} />
+            <ClassFormats
+              onSelectPlan={handlePlanSelect}
+              onConsultClick={handleConsultClick}
+            />
           </RevealOnScroll>
 
-          {/* 8. Cómo funciona */}
-          <RevealOnScroll direction="up">
-            <HowItWorks onCtaClick={scrollToContact} />
-          </RevealOnScroll>
-
-          {/* 9. Preguntas Frecuentes */}
+          {/* 8. Preguntas Frecuentes */}
           <RevealOnScroll direction="up">
             <Faq onOpenTest={() => setIsTestModalOpen(true)} />
           </RevealOnScroll>
@@ -203,8 +204,7 @@ export default function App() {
           <RevealOnScroll direction="up">
             <ContactForm
               initialGoal={selectedGoal}
-              initialFormat={selectedFormat}
-              initialModality={selectedModality}
+              initialPlan={selectedPlan}
               onOpenTest={() => setIsTestModalOpen(true)}
             />
           </RevealOnScroll>
@@ -222,6 +222,13 @@ export default function App() {
       <LevelTestModal
         isOpen={isTestModalOpen}
         onClose={() => setIsTestModalOpen(false)}
+      />
+
+      {/* How It Works Modal */}
+      <HowItWorksModal
+        isOpen={isHowItWorksModalOpen}
+        onClose={() => setIsHowItWorksModalOpen(false)}
+        onCtaClick={scrollToContact}
       />
 
       {/* Floating Scroll to Top Button */}

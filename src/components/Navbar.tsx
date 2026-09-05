@@ -105,8 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { name: 'Inicio', href: '#inicio' },
     { name: 'Nosotros', href: '#quienes-somos', isAboutUs: true },
     { name: 'Metodología', href: '#metodologia' },
-    { name: 'Clases', href: '#clases' },
-    { name: 'Cómo funciona', href: '#como-funciona' },
+    { name: 'Precios', href: '#clases' },
     { name: '¿Preguntas?', href: '#faq' },
     { name: 'Contacto', href: '#contacto' },
   ];
@@ -281,7 +280,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div className="text-xs">
               <p className="font-semibold text-white">Clases 100% a medida</p>
-              <p className="text-slate-400">Online & Presencial</p>
+              <p className="text-slate-400">100% Online Interactiva</p>
             </div>
           </div>
 

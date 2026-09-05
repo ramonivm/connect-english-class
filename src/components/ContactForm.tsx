@@ -28,6 +28,7 @@ import {
 
 interface ContactFormProps {
   initialGoal?: string;
+  initialPlan?: string;
   initialFormat?: string;
   initialModality?: string;
   onOpenTest?: () => void;
@@ -35,6 +36,7 @@ interface ContactFormProps {
 
 export const ContactForm: React.FC<ContactFormProps> = ({
   initialGoal = '',
+  initialPlan = '',
   initialFormat = '',
   initialModality = '',
   onOpenTest,
@@ -47,11 +49,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     telefono: '',
     nivelAproximado: 'Inicial / Principiante (A1-A2)',
     objetivoPrincipal: initialGoal || 'Inglés para el trabajo',
+    planInteres: initialPlan || 'Clase Normal',
     objetivos: initialGoal ? [initialGoal] : [],
     enfoques: [],
     mensaje: '',
-    modalidadPreferida: initialModality || 'Modalidad Online',
-    tamanoGrupo: initialFormat || 'Clase individual',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -68,16 +69,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   }, [initialGoal]);
 
   useEffect(() => {
-    if (initialFormat) {
-      setFormData((prev) => ({ ...prev, tamanoGrupo: initialFormat }));
+    if (initialPlan) {
+      setFormData((prev) => ({
+        ...prev,
+        planInteres: initialPlan,
+      }));
     }
-  }, [initialFormat]);
-
-  useEffect(() => {
-    if (initialModality) {
-      setFormData((prev) => ({ ...prev, modalidadPreferida: initialModality }));
-    }
-  }, [initialModality]);
+  }, [initialPlan]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -144,8 +142,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       objetivos: initialGoal ? [initialGoal] : [],
       enfoques: [],
       mensaje: '',
-      modalidadPreferida: initialModality || 'Modalidad Online',
-      tamanoGrupo: initialFormat || 'Clase individual',
     });
   };
 
@@ -167,7 +163,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   ];
 
   return (
-    <section id="contacto" className="py-20 md:py-28 bg-slate-100 text-slate-800 relative">
+    <section id="contacto" className="py-8 sm:py-10 md:py-12 bg-slate-100 text-slate-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
@@ -556,7 +552,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         </div>
                       </div>
 
-                      {/* Grid 2 Cols: Nivel Aprox. y Objetivo principal */}
+                      {/* Nivel Aprox. y Plan de Interés */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <div className="flex items-center justify-between mb-1.5">
@@ -570,7 +566,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                                 className="text-coral-500 hover:text-coral-600 font-semibold text-xs flex items-center gap-1 cursor-pointer transition-colors"
                               >
                                 <ClipboardCheck className="w-3.5 h-3.5" />
-                                <span>Conocer mi nivel</span>
+                                <span>Conocer nivel</span>
                               </button>
                             )}
                           </div>
@@ -589,38 +585,25 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         </div>
 
                         <div>
-                          <label htmlFor="tamanoGrupo" className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1.5">
-                            Integrantes
+                          <label htmlFor="planInteres" className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1.5">
+                            Plan de clases de interés
                           </label>
                           <select
-                            id="tamanoGrupo"
-                            name="tamanoGrupo"
-                            value={formData.tamanoGrupo}
+                            id="planInteres"
+                            name="planInteres"
+                            value={formData.planInteres || 'Clase Normal'}
                             onChange={handleChange}
                             className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-coral-500 focus:bg-white transition-all"
                           >
-                            <option value="Clase individual">Clase individual (1 persona)</option>
-                            <option value="Clase para dos personas">Clase para dos personas (Dúo)</option>
+                            <option value="Clase Normal">Clase Normal (45 min. · $ 27.000)</option>
+                            <option value="Quick class">Quick class (30 min. · $ 21.000)</option>
+                            <option value="Clase Doble">Clase Doble (90 min. · $ 45.000)</option>
+                            <option value="Aún por definir / Solicito asesoría">Aún por definir / Solicito asesoría</option>
                           </select>
                         </div>
                       </div>
 
-                      {/* Modalidad Preferida */}
-                      <div>
-                        <label htmlFor="modalidadPreferida" className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1.5">
-                          Modalidad preferida
-                        </label>
-                        <select
-                          id="modalidadPreferida"
-                          name="modalidadPreferida"
-                          value={formData.modalidadPreferida}
-                          onChange={handleChange}
-                          className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-coral-500 focus:bg-white transition-all"
-                        >
-                          <option value="Modalidad Online">Modalidad Online</option>
-                          <option value="Modalidad Presencial">Modalidad Presencial (sujeta a zona)</option>
-                        </select>
-                      </div>
+                      {/* Modalidad Preferida (Removed since only online is available) */}
 
                       {/* Field: Mensaje */}
                       <div>

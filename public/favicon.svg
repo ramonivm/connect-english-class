@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="50" fill="#FF5A5F"/>
+  <g fill="#FFFFFF">
+    <!-- Left N Ribbon -->
+    <path d="M22 23 H31 V77 H22 Z"/>
+    <polygon points="22,23 31,23 63,77 54,77"/>
+    <polygon points="54,23 63,23 63,45 54,33"/>
+
+    <!-- Right N Ribbon -->
+    <path d="M69 23 H78 V77 H69 Z"/>
+    <polygon points="38,23 47,23 78,77 69,77"/>
+    <polygon points="38,55 47,67 47,77 38,77"/>
+  </g>
+</svg>

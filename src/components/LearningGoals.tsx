@@ -30,11 +30,11 @@ interface LearningGoalsProps {
 
 export const LearningGoals: React.FC<LearningGoalsProps> = ({ onSelectGoal }) => {
   return (
-    <section id="objetivos" className="py-20 md:py-28 bg-white text-slate-800">
+    <section id="objetivos" className="py-8 sm:py-10 md:py-12 bg-white text-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-wider">
             <Target className="w-4 h-4 text-coral-500" />
             <span>Objetivos de Aprendizaje</span>
@@ -44,40 +44,40 @@ export const LearningGoals: React.FC<LearningGoalsProps> = ({ onSelectGoal }) =>
             ¿Para qué necesitas aprender inglés?
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 font-sans">
+          <p className="text-sm sm:text-base text-slate-600 font-sans">
             Ajustamos los contenidos, conversaciones y ejercicios para que respondan directamente a lo que necesitas en tu vida diaria o profesional.
           </p>
         </div>
 
         {/* Goals Grid */}
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
           {LEARNING_GOALS.map((goal) => {
-            const icon = iconMap[goal.iconName] || <Sparkles className="w-6 h-6" />;
+            const icon = iconMap[goal.iconName] || <Sparkles className="w-5 h-5" />;
             return (
               <div
                 key={goal.id}
-                className="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-coral-500 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="bg-slate-50 rounded-xl p-4 border border-slate-200 hover:border-coral-500 hover:bg-white hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#0B132B] text-coral-500 flex items-center justify-center group-hover:bg-coral-500 group-hover:text-white transition-colors duration-300 shadow-md">
+                  <div className="flex items-center justify-between mb-2.5">
+                    <div className="w-9 h-9 rounded-lg bg-[#0B132B] text-coral-500 flex items-center justify-center group-hover:bg-coral-500 group-hover:text-white transition-colors duration-200 shadow-sm">
                       {icon}
                     </div>
-                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-md bg-slate-200/70 text-slate-700 group-hover:bg-coral-50 group-hover:text-coral-600 transition-colors">
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-200/70 text-slate-700 group-hover:bg-coral-50 group-hover:text-coral-600 transition-colors">
                       {goal.tag}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-lg font-bold text-[#0B132B] mb-2 group-hover:text-coral-600 transition-colors">
+                  <h3 className="font-display text-base font-bold text-[#0B132B] mb-1 group-hover:text-coral-600 transition-colors leading-snug">
                     {goal.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans">
                     {goal.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center justify-between">
+                <div className="mt-3 pt-2.5 border-t border-slate-200/60 flex items-center justify-between">
                   <button
                     onClick={() => onSelectGoal(goal.title)}
                     className="text-xs font-semibold text-coral-500 hover:text-coral-600 flex items-center gap-1 group/btn cursor-pointer"

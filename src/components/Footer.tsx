@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Mail, MapPin, Info } from 'lucide-react';
+import { Mail, MapPin, Info } from 'lucide-react';
 
 interface FooterProps {
   onNavigateAboutUs?: () => void;
@@ -54,8 +54,7 @@ export const Footer: React.FC<FooterProps> = ({
     { name: 'Inicio', href: '#inicio' },
     { name: 'Nosotros', href: '#quienes-somos', isAboutUs: true },
     { name: 'Metodología', href: '#metodologia' },
-    { name: 'Clases', href: '#clases' },
-    { name: 'Cómo funciona', href: '#como-funciona' },
+    { name: 'Precios', href: '#clases' },
     { name: 'Testimonios', href: '#testimonios', isTestimonials: true },
     { name: '¿Preguntas?', href: '#faq' },
     { name: 'Contacto', href: '#contacto' },
@@ -71,10 +70,26 @@ export const Footer: React.FC<FooterProps> = ({
             <a
               href="#inicio"
               onClick={(e) => handleLinkClick(e, '#inicio')}
-              className="flex items-center gap-2.5 inline-block cursor-pointer"
+              className="flex items-center gap-2.5 inline-block cursor-pointer group"
             >
-              <div className="w-10 h-10 rounded-xl bg-coral-500 flex items-center justify-center text-white shadow-md">
-                <BookOpen className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-full bg-coral-500 flex items-center justify-center shadow-md group-hover:scale-105 group-hover:bg-coral-600 transition-all duration-300 shrink-0">
+                <svg
+                  className="w-[28px] h-[28px] text-white shrink-0"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="Isotipo Connect English Class"
+                >
+                  {/* Left N Ribbon */}
+                  <path d="M22 23 H31 V77 H22 Z" fill="currentColor" />
+                  <polygon points="22,23 31,23 63,77 54,77" fill="currentColor" />
+                  <polygon points="54,23 63,23 63,45 54,33" fill="currentColor" />
+
+                  {/* Right N Ribbon */}
+                  <path d="M69 23 H78 V77 H69 Z" fill="currentColor" />
+                  <polygon points="38,23 47,23 78,77 69,77" fill="currentColor" />
+                  <polygon points="38,55 47,67 47,77 38,77" fill="currentColor" />
+                </svg>
               </div>
               <span className="font-display font-bold text-2xl text-white tracking-wide">
                 Connect English Class
@@ -82,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({
             </a>
 
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              Clases de inglés personalizadas individuales o en formato dúo (1 o 2 estudiantes) en modalidad online y presencial según cobertura.
+              Clases de inglés personalizadas individuales (1 estudiante) en modalidad 100% online interactiva.
             </p>
 
             <p className="text-xs text-slate-500">
@@ -122,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <span>[PENDIENTE: datos de contacto]</span>
               </div>
               <p className="text-slate-400 leading-relaxed">
-                Los números directos de teléfono, correo institucional y dirección de sede o zonas de cobertura presencial se asignan al formalizar la propuesta.
+                Los números directos de teléfono y correo institucional se asignan al formalizar la propuesta.
               </p>
             </div>
 
@@ -133,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-slate-500" />
-                <span>Atención Online global & Presencial según zona</span>
+                <span>Atención 100% Online Global</span>
               </div>
             </div>
           </div>

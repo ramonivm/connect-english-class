@@ -30,6 +30,21 @@ export interface ClassFormat {
   badge?: string;
 }
 
+export interface ClassPlan {
+  id: string;
+  name: string;
+  duration: string;
+  durationPedagogical: string;
+  durationMinutes: number;
+  price: string;
+  priceNumeric: number;
+  description: string;
+  recommendedFor: string;
+  badge?: string;
+  popular?: boolean;
+  features: string[];
+}
+
 export interface ClassModality {
   id: string;
   title: string;
@@ -57,9 +72,8 @@ export interface ContactFormData {
   telefono: string;
   nivelAproximado: string;
   objetivoPrincipal: string;
+  planInteres?: string;
   objetivos: string[];
   enfoques: string[];
   mensaje: string;
-  modalidadPreferida: string;
-  tamanoGrupo: string;
 }

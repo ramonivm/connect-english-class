@@ -205,7 +205,7 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({
               onClick={onGoToClasses}
               className="w-full sm:w-auto bg-coral-500 hover:bg-coral-600 text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg shadow-coral-500/20 transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 cursor-pointer text-base"
             >
-              <span>Ver formatos de clases</span>
+              <span>Ver planes y precios</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 

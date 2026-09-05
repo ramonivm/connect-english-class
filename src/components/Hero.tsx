@@ -1,6 +1,6 @@
 import React from 'react';
 import { HERO_DATA } from '../data/landingData';
-import { ArrowRight, CheckCircle2, Users, Monitor, MapPin, Star, ExternalLink } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Users, Monitor, User, Star, ExternalLink } from 'lucide-react';
 
 interface HeroProps {
   onConsultClassesClick: () => void;
@@ -92,11 +92,11 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
               <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-coral-500 shrink-0" />
-                <span>1 o 2 estudiantes</span>
+                <span>Clases 1 a 1</span>
               </div>
               <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-coral-500 shrink-0" />
-                <span>Online / Presencial</span>
+                <span>100% Online</span>
               </div>
             </div>
 
@@ -135,12 +135,12 @@ export const Hero: React.FC<HeroProps> = ({
 
                 <div className="p-4 rounded-xl bg-[#0B132B]/80 border border-slate-700/60 flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400 mt-0.5">
-                    <MapPin className="w-5 h-5" />
+                    <User className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-white">Modalidad Presencial</h4>
+                    <h4 className="text-sm font-semibold text-white">Clases 1 a 1</h4>
                     <p className="text-xs text-slate-300 mt-0.5">
-                      Atención directa cara a cara en zonas con cobertura confirmada.
+                      Atención exclusiva y 100% focalizada en tu progreso.
                     </p>
                   </div>
                 </div>
@@ -148,8 +148,8 @@ export const Hero: React.FC<HeroProps> = ({
 
               {/* Footer Indicator in Card */}
               <div className="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-400">
-                <span>Atención focalizada</span>
-                <span className="font-semibold text-coral-500">1 o 2 alumnos</span>
+                <span>1 solo alumno · 100% online</span>
+                <span className="font-semibold text-coral-400">Desde $ 21.000 / clase</span>
               </div>
 
             </div>
@@ -158,26 +158,26 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Mini Testimonials Strip */}
-        <div className="mt-12 pt-8 border-t border-slate-800/80">
-          <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-5 sm:p-6 backdrop-blur-sm">
-            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6">
+        <div className="mt-8 pt-6 border-t border-slate-800/80">
+          <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-3 backdrop-blur-sm">
+            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
               
               {/* Testimonials Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 flex-1">
                 {miniTestimonials.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/50 flex flex-col justify-between"
+                    className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/50 flex flex-col justify-between"
                   >
-                    <div className="flex items-center gap-0.5 mb-2 text-amber-400">
+                    <div className="flex items-center gap-0.5 mb-1.5 text-amber-400">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                        <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
-                    <p className="text-xs sm:text-[13px] text-slate-200 italic leading-snug mb-2">
+                    <p className="text-xs text-slate-200 italic leading-snug mb-1.5">
                       "{item.quote}"
                     </p>
-                    <span className="text-[11px] font-semibold text-coral-400 tracking-wide uppercase">
+                    <span className="text-[10px] font-semibold text-coral-400 tracking-wide uppercase">
                       – {item.author}
                     </span>
                   </div>
@@ -185,22 +185,22 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               {/* CTA Link to Testimonials Page */}
-              <div className="shrink-0 flex items-center justify-center xl:justify-end xl:pl-4 xl:border-l xl:border-slate-800">
+              <div className="shrink-0 flex items-center justify-center xl:justify-end xl:pl-3 xl:border-l xl:border-slate-800">
                 {onNavigateTestimonials ? (
                   <button
                     onClick={onNavigateTestimonials}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-coral-500/10 hover:bg-coral-500/20 text-coral-400 hover:text-coral-300 border border-coral-500/30 text-xs sm:text-sm font-semibold transition-all group shadow-sm text-center cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-coral-500/10 hover:bg-coral-500/20 text-coral-400 hover:text-coral-300 border border-coral-500/30 text-xs font-semibold transition-all group shadow-sm text-center cursor-pointer"
                   >
                     <span>Leer las más de 185 opiniones -&gt;</span>
-                    <ArrowRight className="w-4 h-4 text-coral-400 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 text-coral-400 group-hover:translate-x-1 transition-transform" />
                   </button>
                 ) : (
                   <a
                     href="#testimonios"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-coral-500/10 hover:bg-coral-500/20 text-coral-400 hover:text-coral-300 border border-coral-500/30 text-xs sm:text-sm font-semibold transition-all group shadow-sm text-center"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-coral-500/10 hover:bg-coral-500/20 text-coral-400 hover:text-coral-300 border border-coral-500/30 text-xs font-semibold transition-all group shadow-sm text-center"
                   >
                     <span>Leer las más de 185 opiniones -&gt;</span>
-                    <ArrowRight className="w-4 h-4 text-coral-400 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 text-coral-400 group-hover:translate-x-1 transition-transform" />
                   </a>
                 )}
               </div>
